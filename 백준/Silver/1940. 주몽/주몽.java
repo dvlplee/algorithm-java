@@ -30,21 +30,15 @@ class Main {
         int cnt = 0;
         int sta = 0; // 시작
         int end = n-1; // 끝
-        int sum = arr[sta] + arr[end]; // 배열 첫요소가 처음 구간 합
-        while (sta!=end) {
-            if(m == sum) {
+        int sum = arr[sta] + arr[end]; // 현재 두 요소의 합
+        while (sta<end) {
+            if(m == arr[sta] + arr[end]) {
                 cnt++;
-                sum-=arr[end];
                 end--;
-                sum+=arr[end];
-            } else if (sum < m) {
-                sum-=arr[sta];
+            } else if (arr[sta] + arr[end] < m) {
                 sta++;
-                sum+=arr[sta];
             } else {
-                sum-=arr[end];
                 end--;
-                sum+=arr[end];
             }
         }
         System.out.println(cnt);
